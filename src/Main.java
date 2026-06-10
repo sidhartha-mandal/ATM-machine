@@ -1,6 +1,10 @@
+import com.sidharth.AtmOperationImpl;
+import com.sidharth.AtmOperationInterface;
+
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
+        AtmOperationInterface op = new AtmOperationImpl();
         int atmnumber = 12345;
         int atmpin = 1234;
         Scanner sc = new Scanner(System.in);
@@ -15,13 +19,17 @@ public class Main {
                 System.out.println("Enter the choice: ");
                 int ch = sc.nextInt();
                 if(ch ==1){
-
+                    op.viewBalance();
                 }
                  else if(ch ==2){
-
+                    System.out.println("Enter the Amount u want to withdraw...\n");
+                    double withdrawAmount = sc.nextDouble();
+                    op.withdrawAmount(withdrawAmount);
                 }
                 else if(ch ==3){
-
+                    System.out.println("Enter the amount you want to deposit: ");
+                    double depositAmount = sc.nextDouble();
+                    op.depositAmount(depositAmount);
                 }
                 else if(ch ==4){
 
