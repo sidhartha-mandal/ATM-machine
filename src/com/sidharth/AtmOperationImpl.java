@@ -4,12 +4,13 @@ public class AtmOperationImpl implements AtmOperationInterface{
     ATM atm = new ATM();
     @Override
     public void viewBalance() {
-        System.out.println("your available balance is: "+atm.getBalance());
+        System.out.println("your available balance is: "+atm.getBalance()+"\n");
     }
 
     @Override
     public void withdrawAmount(double withdrawAmount) {
         System.out.println(" Please collect your withdrawn Amount...\n"+withdrawAmount +"\n");
+        atm.setBalance(atm.getBalance()-withdrawAmount);
         viewBalance();
 
     }
