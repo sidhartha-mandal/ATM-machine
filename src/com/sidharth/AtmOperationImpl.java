@@ -1,6 +1,10 @@
 package com.sidharth;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AtmOperationImpl implements AtmOperationInterface{
+    Map<Double, String> ministmt = new HashMap<>();
     ATM atm = new ATM();
     @Override
     public void viewBalance() {
@@ -9,14 +13,20 @@ public class AtmOperationImpl implements AtmOperationInterface{
 
     @Override
     public void withdrawAmount(double withdrawAmount) {
-        System.out.println(" Please collect your withdrawn Amount...\n"+withdrawAmount +"\n");
-        atm.setBalance(atm.getBalance()-withdrawAmount);
-        viewBalance();
+        if(withdrawAmount<= atm.getBalance()){
+            ministmt.put(withdrawAmount," Amount withdrawn");
+            System.out.println(" Please collect your withdrawn Amount...\n"+withdrawAmount +"\n");
+            atm.setBalance(atm.getBalance()-withdrawAmount);
+            viewBalance();
+        }else{
+            System.out.println("INSUFFICIENT FUNDS !!");
+        }
 
     }
 
     @Override
     public void depositAmount(double depositAmount) {
+        ministmt.put(depositAmount," Amount deposited");
         System.out.println(depositAmount+" Your Amount Deposited sucessfully...\n");
         atm.setBalance(atm.getBalance()+depositAmount);
         viewBalance();
@@ -24,6 +34,8 @@ public class AtmOperationImpl implements AtmOperationInterface{
 
     @Override
     public void viewMiniStatement() {
-
+        for (Map.Entry<Double,String> m: ministmt.entrySet()){
+            System.out.println(m.getKey()+" "+m.getValue());
+        }
     }
 }

@@ -32,6 +32,7 @@ public class Main {
                     op.depositAmount(depositAmount);
                 }
                 else if(ch ==4){
+                    op.viewMiniStatement();
 
                 }
                 else if(ch ==5){
